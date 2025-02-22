@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Attacks</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* Make navbar full width and remove top gap */
+        
+        .navbar-custom {
+            background-color: #005AFF;
+            width: 100%;
+            margin: 0;
+        }
+        
+        .navbar-custom .navbar-brand {
+            color: #ffffff;
+            font-size: 25px;
+            font-weight: bold;
+        }
+        
+        .navbar-custom .navbar-nav .nav-link {
+            color: #ffffff;
+            font-weight: bold;
+        }
+        
+        .navbar-custom .navbar-nav .nav-link.active {
+            color: #ffffff;
+            font-weight: bold;
+        }
+        
+        .navbar-custom .dropdown-menu {
+            background-color: #f9f9f9;
+        }
+        
+        .navbar-custom .dropdown-menu .dropdown-item {
+            color: #000000;
+        }
+        
+        .navbar-custom .form-control {
+            background-color: #e9ecef;
+            color: #000000;
+        }
+        
+        .navbar-custom .form-control:focus {
+            border-color: #ffffff;
+            box-shadow: 0 0 0 0.25rem rgba(13, 13, 13, 0.852);
+        }
+        
+        .navbar-custom .btn-outline-success {
+            color: #ffffff;
+            border-color: #000000;
+        }
+        
+        .navbar-custom .ml-auto {
+            margin-left: auto;
+        }
+        /* Global Reset */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('/static/Attacks/pexels-photo-1103970.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 0;
+            /* Remove top padding */
+        }
+        
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 100px;
+            max-width: 1200px;
+            width: 100%;
+            margin-top: 100px;
+        }
+        
+        .card {
+            width: 400px;
+            /* Set the desired width */
+            height: 500px;
+            /* Set the desired height */
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-image img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+        
+        .card-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+        
+        .card h3 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .card p {
+            flex-grow: 1;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .card-btn {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            text-align: center;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        
+        .card-btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+        /* Responsive Design */
+        
+        @media (max-width: 768px) {
+            .card-content {
+                padding: 15px;
+            }
+            .card-btn {
+                padding: 10px 16px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        .centered-text {
+            text-align: center;
+            margin: 50px 0 0px;
+            /* Adds more space above and below */
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #000000;
+            /* Changes text color to tomato (you can use any other color) */
+        }
+        /* Footer Section Styling */
+        
+        .footer {
+            background-color: #ffffff;
+            color: #000000;
+            padding: 40px 0;
+            width: 100%;
+            /* Ensures the footer takes the full width */
+            position: relative;
+            margin-top: 50px;
+            /* Adjust this value to move the footer down */
+        }
+        
+        .container-fluid {
+            max-width: 100%;
+            padding-left: 15px;
+            /* Optional padding */
+            padding-right: 15px;
+            /* Optional padding */
+        }
+        
+        .footer-content {
+            background-color: rgba(52, 152, 219, 0.871);
+            /* Light background for the box */
+            border-radius: 8px;
+            /* Rounded corners */
+            padding: 20px;
+            /* Padding inside the box */
+            max-width: 2000px;
+            /* Set a max width for the box */
+            margin: 0 auto;
+            /* Center the box */
+        }
+        
+        .footer h3 {
+            font-size: 25px;
+            margin-bottom: 20px;
+        }
+        
+        .footer ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer ul li a {
+            color: #403f3f;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease-in-out;
+        }
+        
+        .footer ul li a:hover {
+            color: #000000;
+        }
+        
+        .footer .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .footer .social-icons a {
+            color: #f3efef;
+            font-size: 22px;
+            transition: color 0.3s ease-in-out;
+        }
+        
+        .footer .social-icons a:hover {
+            color: #000000;
+        }
+        /* Footer Bottom Section */
+        
+        .footer-bottom {
+            background-color: #343a40;
+            text-align: center;
+            padding: 15px 0;
+            color: #ffffff;
+            font-size: 20px;
+            border-top: 1px solid #333;
+            margin-top: 25px;
+            /* Add margin-top to move it down */
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Virus Detection</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/Home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Post">Post</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="/Attacks" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Attacks
+                        </a>
+
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " aria-disabled="true" href="/Help">Help</a>
+                    </li>
+                </ul>
+                <form class="d-flex ml-auto" role="search">
+                    <input class="form-control me-2" type="search" id="search-bar" placeholder="Search" aria-label="Search" oninput="filterSearch()">
+                    <ul id="search-results" class="list-group position-absolute mt-2" style="display: none;"></ul>
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="centered-text">
+        Exploring All Types of Computer Virus and Attacks
+    </div>
+
+    <div class="card-container">
+        <!-- Card 1 -->
+        <div class="card">
+            <div class="card-image">
+                <img src="/static/Attacks/Card/SQL_Injection_images.jpg" alt="Card Image 1">
+            </div>
+            <div class="card-content">
+                <h3> SQL Injection </h3>
+                <p>SQL Injection is an attack where malicious SQL code is injected into a database query to manipulate or access data.</p>
+                <a href="/SQL_Injection" class="card-btn">Learn More</a>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card">
+            <div class="card-image">
+                <img src="/static/Attacks/Card/cross_site_scripting_images.jpg" alt="Card Image 2">
+            </div>
+            <div class="card-content">
+                <h3>Cross Site Scripting </h3>
+                <p>Cross-Site Scripting (XSS) is a security vulnerability that allows attackers to inject malicious scripts into web pages viewed by other users.</p>
+                <a href="/Cross_Site_Scripting" class="card-btn">Learn More</a>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+            <div class="card-image">
+                <img src="/static/Attacks/Card/Command_Execution_Images.jpg" alt="Card Image 3">
+            </div>
+            <div class="card-content">
+                <h3>Command Execution </h3>
+                <p>Command Execution vulnerabilities allow attackers to remotely execute unauthorized system commands, gaining control.</p>
+                <a href="/Command_Execution" class="card-btn">Learn More</a>
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card">
+            <div class="card-image">
+                <img src="/static/Attacks/Card/Trojan_Horse_Images.jpg" alt="Card Image 3">
+            </div>
+            <div class="card-content">
+                <h3>Trojan horse </h3>
+                <p>A Trojan horse is malware disguised as legitimate software, designed to trick users into installing it and giving attackers access to their systems.</p>
+                <a href="/Trojan_horse" class="card-btn">Learn More</a>
+            </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="card">
+            <div class="card-image">
+                <img src="/static/Attacks/Card/Spyware_images.jpg" alt="Card Image 3">
+            </div>
+            <div class="card-content">
+                <h3>Spyware </h3>
+                <p>Spyware is malicious software that secretly monitors user activity and collects sensitive data without their knowledge.</p>
+                <a href="/Spyware" class="card-btn">Learn More</a>
+            </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="card">
+            <div class="card-image">
+                <img src="/static/Attacks/Card/Worm_images.jpg" alt="Card Image 3">
+            </div>
+            <div class="card-content">
+                <h3>Worm </h3>
+                <p>A worm is a type of malware that replicates itself to spread across networks, often causing damage by consuming bandwidth or overloading systems.</p>
+                <a href="/Worm" class="card-btn">Learn More</a>
+            </div>
+        </div>
+
+        <!-- Card 7 -->
+        <div class="card">
+            <div class="card-image">
+                <img src="/static/Attacks/Card/Adware_Images.jpg" alt="Card Image 3">
+            </div>
+            <div class="card-content">
+                <h3>Adware </h3>
+                <p>Adware is software that automatically displays or downloads unwanted advertisements, often collecting user data for targeted ads.</p>
+                <a href="/Adware" class="card-btn">Learn More</a>
+            </div>
+        </div>
+
+        <!-- Card 8 -->
+        <div class="card">
+            <div class="card-image">
+                <img src="/static/Attacks/Card/Keylogger_Images.jpg" alt="Card Image 3">
+            </div>
+            <div class="card-content">
+                <h3>Keyloggers </h3>
+                <p>Keyloggers are malicious programs that record keystrokes on a device to capture sensitive information, such as passwords and personal data.</p>
+                <a href="/Keyloggers" class="card-btn">Learn More</a>
+            </div>
+        </div>
+
+        <!-- Card 9 -->
+        <div class="card">
+            <div class="card-image">
+                <img src="/static/Attacks/Card/Phishing_Images.jpg" alt="Card Image 3">
+            </div>
+            <div class="card-content">
+                <h3>Phishing </h3>
+                <p>Phishing is a deceptive scam that tricks users into providing sensitive information by pretending to be a trusted source.</p>
+                <a href="/Phishing" class="card-btn">Learn More</a>
+            </div>
+        </div>
+
+        <!-- Card 10 -->
+        <div class="card">
+            <div class="card-image">
+                <img src="/static/Attacks/Card/Rootkits_Images.jpg" alt="Card Image 3">
+            </div>
+            <div class="card-content">
+                <h3>Rootkits </h3>
+                <p>Rootkits are malicious software designed to gain unauthorized access to a system while hiding their presence from users and security software.</p>
+                <a href="/Rootkits" class="card-btn">Learn More</a>
+            </div>
+        </div>
+
+        <!-- Card 11 -->
+        <div class="card">
+            <div class="card-image">
+                <img src="/static/Attacks/Card/Ransomware_Images.jpg" alt="Card Image 3">
+            </div>
+            <div class="card-content">
+                <h3>Ransomware </h3>
+                <p>Ransomware is malicious software that encrypts a user's files or system, demanding a ransom for the decryption key to regain access.</p>
+                <a href="/Ransomware" class="card-btn">Learn More</a>
+            </div>
+        </div>
+
+        <!-- Card 12 -->
+        <div class="card">
+            <div class="card-image">
+                <img src="/static/Attacks/Card/Cryptojacking_Images.jpg" alt="Card Image 3">
+            </div>
+            <div class="card-content">
+                <h3>Cryptojacking </h3>
+                <p>Cryptojacking is the unauthorized use of a device to mine cryptocurrency without the owner's knowledge.</p>
+                <a href="/Cryptojacking" class="card-btn">Learn More</a>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="footer-content">
+                <div class="row">
+                    <!-- Quick Links -->
+                    <div class="col-md-4 quick-links">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="/Home">Home</a></li>
+                            <li><a href="/Post">Post</a></li>
+                            <li><a href="/Attacks">Attacks</a></li>
+                            <li><a href="/about">About Us</a></li>
+                            <li><a href="/ContactUs">Contact</a></li>
+                        </ul>
+                    </div>
+                    <!-- Contact Info -->
+                    <div class="col-md-4 contact-info">
+                        <h3>Contact Info</h3>
+                        <ul>
+                            <li>Email: Harsh@Vishwakram.com</li>
+                            <li>Phone: +91 90XXXXXXX1</li>
+                            <li>Address: A-34 sn college , Mumbai, Maharashtra, 4XXXXX5</li>
+                        </ul>
+                    </div>
+                    <!-- Social Media Icons -->
+                    <div class="col-md-4 social-icons">
+                        <h3>Follow Us</h3>
+                        <a href="https://www.facebook.com/" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://x.com/" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.instagram.com/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer Bottom Section -->
+        <div class="footer-bottom">
+            <p>&copy; 2024 Your Blog Name. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const searchItems = [{
+            name: 'SQL Injection',
+            url: '/SQL_Injection'
+        }, {
+            name: 'Cross Site Scripting',
+            url: '/Cross_Site_Scripting'
+        }, {
+            name: 'Command Execution',
+            url: '/Command_Execution'
+        }, {
+            name: 'Trojan Horse',
+            url: '/Trojan_horse'
+        }, {
+            name: 'Spyware',
+            url: '/Spyware'
+        }, {
+            name: 'Worm',
+            url: '/Worm'
+        }, {
+            name: 'Spyware',
+            url: '/Spyware'
+        }, {
+            name: 'Adware',
+            url: '/Adware'
+        }, {
+            name: 'Keyloggers',
+            url: '/Keyloggers'
+        }, {
+            name: 'Phishing',
+            url: '/Phishing'
+        }, {
+            name: 'Rootkits',
+            url: '/Rootkits'
+        }, {
+            name: 'Ransomware',
+            url: '/Ransomware'
+        }, {
+            name: 'Cryptojacking',
+            url: '/Cryptojacking'
+        }, {
+            name: 'Help',
+            url: '/ContactUs'
+        }];
+
+        function filterSearch() {
+            const input = document.getElementById('search-bar').value.toLowerCase();
+            const resultsContainer = document.getElementById('search-results');
+            resultsContainer.innerHTML = ''; // Clear previous results
+            const filteredItems = searchItems.filter(item => item.name.toLowerCase().includes(input));
+
+            if (filteredItems.length > 0 && input !== '') {
+                resultsContainer.style.display = 'block';
+                filteredItems.forEach(item => {
+                    const li = document.createElement('li');
+                    li.classList.add('list-group-item');
+                    li.innerHTML = `<a href="${item.url}" class="text-decoration-none">${item.name}</a>`;
+                    resultsContainer.appendChild(li);
+                });
+            } else {
+                resultsContainer.style.display = 'none';
+            }
+        }
+
+        document.addEventListener('click', function(event) {
+            const resultsContainer = document.getElementById('search-results');
+            if (!event.target.closest('#search-bar')) {
+                resultsContainer.style.display = 'none';
+            }
+        });
+    </script>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

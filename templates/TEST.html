@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virus Detection</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            overflow: hidden;
+            list-style: none;
+            font-family: 'Roboto Mono', monospace;
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 6rem;
+            background: linear-gradient( #caecea45, #caecea45);
+            backdrop-filter: 2px;
+            box-shadow: rgb(86, 91, 95) 3px 3px 6px 0px inset, rgba(155, 145, 145, 0.5) -3px -3px 6px 1px, rgba(62, 62, 62, 0.5) 3px 3px 6px 1px;
+        }
+        
+        h1 {
+            color: #fff;
+        }
+        
+        span {
+            color: #ffcf81;
+        }
+        
+        ul {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            cursor: pointer;
+        }
+        
+        ul li {
+            font-size: 20px;
+            color: #ffcf81;
+            letter-spacing: 0.1em;
+            transition: 0.3s;
+        }
+        
+        ul li:hover {
+            color: #fff;
+        }
+        
+        .image {
+            position: absolute;
+            top: 95%;
+            left: 10%;
+            width: 300px;
+            height: auto;
+            animation: rocket 3s linear;
+            z-index: 5;
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        @keyframes rocket {
+            0% {
+                top: 90%;
+                left: 10%;
+                opacity: 1;
+            }
+            100% {
+                top: -45%;
+                left: 10%;
+                opacity: 1;
+            }
+        }
+        
+        .image img {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .header {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            background: url(/static/back.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            filter: brightness(0.8);
+        }
+        
+        .main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 50px;
+            padding: 0 6rem;
+        }
+        
+        .main .picture {
+            position: absolute;
+            width: 475px;
+            height: auto;
+            top: 18%;
+            left: -100%;
+            animation: picture 3s forwards;
+            animation-delay: 1s;
+        }
+        
+        @keyframes picture {
+            0% {
+                top: 18%;
+                left: -100%;
+                opacity: 1;
+            }
+            99% {
+                top: 20%;
+                left: 8%;
+                opacity: 1;
+            }
+            100% {
+                top: 20%;
+                left: 8%;
+                opacity: 0;
+            }
+        }
+        
+        .shake {
+            position: absolute;
+            width: 500px;
+            height: auto;
+            top: 18%;
+            left: 8%;
+            animation: shake 1.5s ease infinite;
+            opacity: 0;
+            animation-delay: 3.99s;
+        }
+        
+        @keyframes shake {
+            0% {
+                top: 18%;
+                left: 8%;
+                opacity: 1;
+            }
+            50% {
+                top: 20%;
+                left: 8%;
+                opacity: 1;
+            }
+            100% {
+                top: 18%;
+                left: 8%;
+                opacity: 1;
+            }
+        }
+        
+        .main .main__text {
+            position: absolute;
+            top: 30%;
+            right: 5%;
+            width: 50%;
+            color: aliceblue;
+            opacity: 0;
+            animation: text 3s forwards;
+            background: linear-gradient( #caecea14, #caecea14);
+            box-shadow: rgb(86, 91, 95) 3px 3px 6px 0px, rgba(155, 145, 145, 0.5) -3px -3px 6px 1px, rgba(62, 62, 62, 0.5) 3px 3px 6px 1px;
+            padding: 3rem;
+            border-top-right-radius: 60px;
+            border-bottom-left-radius: 60px;
+        }
+        
+        .main .main__text h1 {
+            font-size: 70px;
+            margin-bottom: 10px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-shadow: -1px -2px 1px rgba(140, 140, 140, 1);
+        }
+        
+        .main .main__text p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            padding: 10px 4rem;
+            border-radius: 15px;
+            font-size: 16px;
+            cursor: pointer;
+            display: inline-block;
+            text-align: center;
+            border: 1px solid #ffcf81;
+            color: #ffcf81;
+            background: transparent;
+            transition: 0.4s;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+        }
+        
+        .btn:hover {
+            background: #ffcf81;
+            color: #000;
+        }
+        
+        @keyframes text {
+            0% {
+                top: 90%;
+                right: 5%;
+                opacity: 1;
+            }
+            100% {
+                top: 30%;
+                right: 5%;
+                opacity: 1;
+            }
+        }
+        
+        .btn-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .btn-container .btn {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="nav">
+            <h1>Virus<span>Detection</span></h1>
+            <ul>
+                <li><a href="/Home" style="color: #ffcf81; text-decoration: none;">Home</a></li>
+                <li><a href="/Missions" style="color: #ffcf81; text-decoration: none;">Missions</a></li>
+                <li><a href="/about" style="color: #ffcf81; text-decoration: none;">About</a></li>
+                <li><a href="/ContactUs" style="color: #ffcf81; text-decoration: none;">Contact us</a></li>
+            </ul>
+        </div>
+        <div class="image">
+            <img src="/static/rocket2.png" alt="">
+        </div>
+        <img src="/static/astronaut.png" alt="" class="shake">
+        <div class="main">
+            <div class="picture">
+                <img src="/static/astronaut.png" alt="">
+            </div>
+            <div class="main__text">
+                <h1>Virus<span>Detection</span></h1>
+                <p>Protect your data with our advanced Virus Detection System. Upload files, scan for threats, and get detailed reports instantly. Stay secure and informed!</p>
+                <form action="/login">
+                    <div class="btn-container">
+                        <button class="btn" type="submit">Login 🚀</button>
+                </form>
+                <form action="/Register">
+                    <div class="btn-container">
+                        <button class="btn" type="submit">Register</button>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

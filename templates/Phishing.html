@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Blog Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* Reset CSS */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('/static/Attacks/Blog/Blog_Background_Images.jpg');
+            /* Add your image URL here */
+            background-size: cover;
+            /* Ensures the image covers the entire background */
+            background-position: center;
+            /* Centers the image */
+            background-attachment: fixed;
+            /* Keeps the background fixed when scrolling */
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        /* Navbar Styles */
+        
+        .navbar-custom {
+            background-color: #151515;
+            width: 100%;
+            margin: 0;
+        }
+        
+        .navbar-custom .navbar-brand {
+            color: #ffffff;
+            font-size: 25px;
+            font-weight: bold;
+        }
+        
+        .navbar-custom .navbar-nav .nav-link {
+            color: #ffffff;
+            font-weight: bold;
+        }
+        
+        .navbar-custom .navbar-nav .nav-link.active {
+            color: #ffffff;
+            font-weight: bold;
+        }
+        
+        .navbar-custom .dropdown-menu {
+            background-color: #f9f9f9;
+        }
+        
+        .navbar-custom .dropdown-menu .dropdown-item {
+            color: #000000;
+        }
+        
+        .navbar-custom .form-control {
+            background-color: #e9ecef;
+            color: #000000;
+        }
+        
+        .navbar-custom .form-control:focus {
+            border-color: #ffffff;
+            box-shadow: 0 0 0 0.25rem rgba(13, 13, 13, 0.852);
+        }
+        
+        .navbar-custom .btn-outline-success {
+            color: #ffffff;
+            border-color: #000000;
+        }
+        /* Centered Text */
+        
+        .centered-text {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ffffff;
+        }
+        /* Blog Container */
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        /* Blog Header */
+        
+        .blog-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .blog-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .blog-header p {
+            color: #555;
+            font-size: 1.1rem;
+        }
+        /* Image Section */
+        
+        .images {
+            height: 400px;
+            background-color: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .images img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        /* Title and Button Section */
+        
+        .title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .title-row .title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #343a40;
+        }
+        
+        .title-row .button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        
+        .button:hover {
+            background-color: #0056b3;
+        }
+        /* Main Text Section */
+        
+        .text-box {
+            background-color: #edeff0;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .text-box p {
+            font-size: 1.1rem;
+            color: #495057;
+        }
+        
+        .footer-text-box {
+            background-color: #edeff0;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-text-box p {
+            font-size: 1.1rem;
+            color: #495057;
+        }
+        /* Subtitle Section */
+        
+        .subtitle {
+            width: 30%;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #555;
+            margin-bottom: 30px;
+            text-align: left;
+            margin-left: 0;
+        }
+        /* Resetting default styles */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            /* Ensures the body takes the full height of the viewport */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+        /* Content Section */
+        
+        .content {
+            flex: 1;
+            /* Takes up remaining space, pushing footer down */
+            padding: 20px;
+            /* Content padding */
+        }
+        /* Footer Section Styling */
+        
+        .footer {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 40px 0;
+            width: 100%;
+            /* Ensures the footer takes the full width */
+            position: relative;
+            margin-top: 50px;
+            /* Adjust this value to move the footer down */
+        }
+        
+        .container-fluid {
+            max-width: 100%;
+            padding-left: 15px;
+            /* Optional padding */
+            padding-right: 15px;
+            /* Optional padding */
+        }
+        
+        .footer-content {
+            background-color: rgba(255, 255, 255, 0.1);
+            /* Light background for the box */
+            border-radius: 8px;
+            /* Rounded corners */
+            padding: 20px;
+            /* Padding inside the box */
+            max-width: 2000px;
+            /* Set a max width for the box */
+            margin: 0 auto;
+            /* Center the box */
+        }
+        
+        .footer h3 {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        
+        .footer ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer ul li a {
+            color: #bbb;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s ease-in-out;
+        }
+        
+        .footer ul li a:hover {
+            color: #fff;
+        }
+        
+        .footer .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .footer .social-icons a {
+            color: #bbb;
+            font-size: 22px;
+            transition: color 0.3s ease-in-out;
+        }
+        
+        .footer .social-icons a:hover {
+            color: #fff;
+        }
+        /* Footer Bottom Section */
+        
+        .footer-bottom {
+            background-color: #111;
+            text-align: center;
+            padding: 15px 0;
+            color: #ccc;
+            font-size: 15px;
+            border-top: 1px solid #333;
+            margin-top: 20px;
+            /* Add margin-top to move it down */
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Virus Detection</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/Home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Post">Post</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Attacks
+                    </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/SQL_Injection">SQL Injection</a></li>
+                            <li><a class="dropdown-item" href="/Cross_Site_Scripting">Cross-Site Scripting</a></li>
+                            <li><a class="dropdown-item" href="/Command_Execution">Command Execution</a></li>
+                            <li><a class="dropdown-item" href="/Trojan_horse">Trojan horse</a></li>
+                            <li><a class="dropdown-item" href="/Keyloggers">Keyloggers</a></li>
+                            <li><a class="dropdown-item" href="/Spyware">Spyware</a></li>
+                            <li><a class="dropdown-item" href="/Worm">worm</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="/Attacks">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " aria-disabled="true" href="/Help">Help</a>
+                    </li>
+                </ul>
+                <div class="d-flex ms-auto">
+                    <form class="d-flex ml-auto" role="search">
+                        <input class="form-control me-2" type="search" id="search-bar" placeholder="Search" aria-label="Search" oninput="filterSearch()">
+                        <ul id="search-results" class="list-group position-absolute mt-2" style="display: none;"></ul>
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="centered-text">
+        Welcome to The Phishing Learning System
+    </div>
+
+    <div class="container">
+        <!-- Blog Header -->
+        <div class="blog-header">
+            <h1>Welcome to My Professional Blog</h1>
+            <p>Sharing insights, ideas, and the latest trends in the tech industry</p>
+        </div>
+
+        <!-- Images Section -->
+        <div class="images">
+            <img src="/static/Attacks/Blog/Phishing/Phishing_Images.jpg" alt="Blog Main Image">
+        </div>
+
+        <!-- Title and Button Row -->
+        <div class="title-row">
+            <div class="title">Phishing: The Bait That Lures You In </div>
+
+        </div>
+
+        <!-- Main Text Section -->
+        <div class="text-box">
+            <p>
+                Phishing is one of the most widespread and damaging forms of cybercrime today. It’s a type of social engineering attack where cybercriminals pose as trustworthy entities to deceive individuals into revealing sensitive information, such as passwords, credit
+                card numbers, or social security numbers. In this blog, we’ll explore what phishing is, the different types of phishing attacks, how to recognize phishing attempts, and what steps you can take to protect yourself.
+            </p>
+        </div>
+
+        <!-- Subtitle Section -->
+        <div class="subtitle">
+            What is Phishing ?
+        </div>
+
+        <!-- Footer Text Section -->
+        <div class="footer-text-box">
+            <p>
+                Phishing is a fraudulent attempt to obtain sensitive information by disguising oneself as a legitimate entity. It usually occurs through emails, text messages, or fake websites that appear to be from credible sources like banks, social media platforms,
+                or well-known companies. Once a victim interacts with these malicious links or attachments, they may unknowingly hand over personal information or install malware onto their devices.
+            </p>
+        </div>
+
+        <!-- Subtitle Section -->
+        <div class="subtitle">
+            Types of Phishing Attacks
+        </div>
+
+        <!-- Footer Text Section -->
+        <div class="footer-text-box">
+            <p>
+                Phishing attacks come in various forms, each tailored to specific victims or purposes. Here are the most common types:
+                <br>1. Email Phishing: <br>Email phishing is the most common type of phishing attack. Cybercriminals send emails that appear to be from legitimate organizations like banks, tech companies, or even government agencies. These emails typically
+                contain a link that leads to a fake website designed to steal your login credentials or personal information.
+                <br>2. Spear Phishing: <br>Spear phishing is a more targeted form of phishing. Instead of sending generic emails to thousands of people, attackers customize the email to a specific individual or organization. They may reference personal
+                details or include information that makes the email seem more authentic.
+                <br>3. Whaling: <br>Whaling is a type of spear phishing that targets high-level executives or important individuals within an organization, such as CEOs or CFOs. The stakes are higher, as gaining access to an executive’s credentials can
+                allow the attacker to conduct more significant fraud or corporate espionage.
+                <br>4. Smishing (SMS Phishing): <br>Smishing involves phishing attempts through text messages or SMS. Cybercriminals send texts that prompt you to click on a link or call a number, where you’re asked to provide personal information.
+                <br>5. Vishing (Voice Phishing): <br>Vishing involves phishing attempts conducted over the phone. Scammers call victims pretending to be legitimate entities, such as a bank or government agency, and ask for sensitive information like account
+                numbers or personal identification numbers (PINs).
+                <br>6. Clone Phishing: <br>Clone phishing involves duplicating a legitimate email and then resending it with malicious links or attachments. The attacker creates a “clone” of a previously received email from a trusted source, but swaps
+                out the original content for harmful links.
+                <br>7. Pharming: <br>Pharming is a type of phishing where attackers manipulate DNS (Domain Name System) settings to redirect you to a fake website, even if you’ve entered the correct web address. This attack is more sophisticated and difficult
+                to detect.
+
+            </p>
+        </div>
+    </div>
+
+    <!-- Professional Card Section -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="/static/Attacks/Card/Ransomware_Images.jpg" class="card-img-top" alt="Profile Picture">
+                    <div class="card-body">
+                        <h5 class="card-title">Ransomware </h5>
+                        <p class="card-text">Ransomware is a type of malicious software that encrypts a user's files or system, demanding payment for their decryption and restoration.</p>
+
+                        <a href="/Ransomware" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="/static/Attacks/Card/SQL_Injection_images.jpg" class="card-img-top" alt="Profile Picture">
+                    <div class="card-body">
+                        <h5 class="card-title">SQL Injection </h5>
+                        <p class="card-text">SQL Injection is a web security vulnerability that allows attackers to interfere with an application's database queries by injecting malicious SQL code into input fields.
+                        </p>
+
+                        <a href="/SQL_Injection" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="/static/Attacks/Card/Command_Execution_Images.jpg" class="card-img-top" alt="Profile Picture">
+                    <div class="card-body">
+                        <h5 class="card-title">Command Execution </h5>
+                        <p class="card-text">Command execution allows attackers to exploit vulnerabilities and run unauthorized commands on a system, potentially gaining control and access to sensitive information.</p>
+
+                        <a href="/Command_Execution" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="footer-content">
+                <div class="row">
+                    <!-- Quick Links -->
+                    <div class="col-md-4 quick-links">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="/Home">Home</a></li>
+                            <li><a href="/Post">Post</a></li>
+                            <li><a href="/Attacks">Attacks</a></li>
+                            <li><a href="/about">About Us</a></li>
+                            <li><a href="/ContactUs">Contact</a></li>
+                        </ul>
+                    </div>
+                    <!-- Contact Info -->
+                    <div class="col-md-4 contact-info">
+                        <h3>Contact Info</h3>
+                        <ul>
+                            <li>Email: Harsh@Vishwakram.com</li>
+                            <li>Phone: +91 90XXXXXXX1</li>
+                            <li>Address: A-34 sn college , Mumbai, Maharashtra, 4XXXXX5</li>
+                        </ul>
+                    </div>
+                    <!-- Social Media Icons -->
+                    <div class="col-md-4 social-icons">
+                        <h3>Follow Us</h3>
+                        <a href="https://www.facebook.com/" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://x.com/" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.instagram.com/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer Bottom Section -->
+        <div class="footer-bottom">
+            <p>&copy; 2024 Your Blog Name. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const searchItems = [{
+            name: 'SQL Injection',
+            url: '/SQL_Injection'
+        }, {
+            name: 'Cross Site Scripting',
+            url: '/Cross_Site_Scripting'
+        }, {
+            name: 'Command Execution',
+            url: '/Command_Execution'
+        }, {
+            name: 'Trojan Horse',
+            url: '/Trojan_horse'
+        }, {
+            name: 'Spyware',
+            url: '/Spyware'
+        }, {
+            name: 'Worm',
+            url: '/Worm'
+        }, {
+            name: 'Spyware',
+            url: '/Spyware'
+        }, {
+            name: 'Adware',
+            url: '/Adware'
+        }, {
+            name: 'Keyloggers',
+            url: '/Keyloggers'
+        }, {
+            name: 'Phishing',
+            url: '/Phishing'
+        }, {
+            name: 'Rootkits',
+            url: '/Rootkits'
+        }, {
+            name: 'Ransomware',
+            url: '/Ransomware'
+        }, {
+            name: 'Cryptojacking',
+            url: '/Cryptojacking'
+        }, {
+            name: 'Help',
+            url: '/ContactUs'
+        }];
+
+        function filterSearch() {
+            const input = document.getElementById('search-bar').value.toLowerCase();
+            const resultsContainer = document.getElementById('search-results');
+            resultsContainer.innerHTML = ''; // Clear previous results
+            const filteredItems = searchItems.filter(item => item.name.toLowerCase().includes(input));
+
+            if (filteredItems.length > 0 && input !== '') {
+                resultsContainer.style.display = 'block';
+                filteredItems.forEach(item => {
+                    const li = document.createElement('li');
+                    li.classList.add('list-group-item');
+                    li.innerHTML = `<a href="${item.url}" class="text-decoration-none">${item.name}</a>`;
+                    resultsContainer.appendChild(li);
+                });
+            } else {
+                resultsContainer.style.display = 'none';
+            }
+        }
+
+        document.addEventListener('click', function(event) {
+            const resultsContainer = document.getElementById('search-results');
+            if (!event.target.closest('#search-bar')) {
+                resultsContainer.style.display = 'none';
+            }
+        });
+    </script>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

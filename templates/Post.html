@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Icons -->
+    <style>
+        /* Make navbar full width and remove top gap */
+        
+        .navbar-custom {
+            background-color: #005AFF;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .navbar-custom .navbar-brand {
+            color: #ffffff;
+            font-size: 25px;
+            font-weight: bold;
+        }
+        
+        .navbar-custom .navbar-nav .nav-link {
+            color: #ffffff;
+            font-weight: bold;
+        }
+        
+        .navbar-custom .navbar-nav .nav-link.active {
+            color: #ffffff;
+            font-weight: bold;
+        }
+        
+        .navbar-custom .dropdown-menu {
+            background-color: #f9f9f9;
+        }
+        
+        .navbar-custom .dropdown-menu .dropdown-item {
+            color: #000000;
+        }
+        
+        .navbar-custom .form-control {
+            background-color: #e9ecef;
+            color: #000000;
+        }
+        
+        .navbar-custom .form-control:focus {
+            border-color: #ffffff;
+            box-shadow: 0 0 0 0.25rem rgba(13, 13, 13, 0.852);
+        }
+        
+        .navbar-custom .btn-outline-success {
+            color: #ffffff;
+            border-color: #000000;
+        }
+        
+        .navbar-custom .ml-auto {
+            margin-left: auto;
+        }
+        /* Global Reset */
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('/static/Post/Post_Background_images.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 0;
+            margin-top: 80px;
+            /* Adjusted for navbar height */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        /* .header {
+            background-color: #343a40;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        } */
+        
+        .container {
+            max-width: 1600px;
+            margin: auto;
+        }
+        
+        .post {
+            background-color: white;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .post-background {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            /* Increased height for better visibility */
+            overflow: hidden;
+            margin: 0;
+        }
+        
+        .post-img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            /* Set height to 100% for full coverage */
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            /* Ensures the image covers the area */
+        }
+        
+        .post-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .post-title {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .author-info {
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        
+        .post-text {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .social-icons a {
+            text-decoration: none;
+            font-size: 20px;
+            color: #333;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: #0077cc;
+        }
+        
+        .comments-section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            /* Ensure space between post content and comments */
+            display: none;
+        }
+        
+        .comments-section h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .comments-section textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            font-size: 14px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+        
+        .comments-section button {
+            padding: 10px 15px;
+            background-color: #0077cc;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .comments-section button:hover {
+            background-color: #005fa3;
+        }
+        
+        .comment-button {
+            padding: 10px 15px;
+            background-color: #0077cc;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            margin-left: auto;
+        }
+        
+        .comment-button:hover {
+            background-color: #005fa3;
+        }
+        
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: 50px;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Virus Detection</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/Home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Post">Post</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="/Attacks" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Attacks
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/SQL_Injection">SQL Injection</a></li>
+                            <li><a class="dropdown-item" href="/Cross_Site_Scripting">Cross-Site Scripting</a></li>
+                            <li><a class="dropdown-item" href="/Command_Execution">Command Execution</a></li>
+                            <li><a class="dropdown-item" href="/Trojan_horse">Trojan horse</a></li>
+                            <li><a class="dropdown-item" href="/Keyloggers">Keyloggers</a></li>
+                            <li><a class="dropdown-item" href="/Spyware">Spyware</a></li>
+                            <li><a class="dropdown-item" href="/Worm">worm</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="/Attacks">Something else here</a></li>
+                        </ul>
+
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " aria-disabled="true" href="/Help">Help</a>
+                    </li>
+                </ul>
+                <form class="d-flex ml-auto" role="search">
+                    <input class="form-control me-2" type="search" id="search-bar" placeholder="Search" aria-label="Search" oninput="filterSearch()">
+                    <ul id="search-results" class="list-group position-absolute mt-2" style="display: none;"></ul>
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <!-- 
+    <div class="header">
+        <h1>Help Center</h1>
+    </div> -->
+
+
+    <div class="container">
+        <!-- Post Section 1 -->
+        <div class="post">
+            <div class="post-background">
+                <img src="/static/Post/CVE-2024-27348.jpg" alt="Post Background Image 1" class="post-img">
+            </div>
+            <div class="post-content">
+                <h1 class="post-title">Understanding CVE-2024-27348: A Wake-Up Call for Apache HugeGraph Users</h1>
+                <p class="author-info">By Zeyad Azima | Published on April 22, 2024</p>
+                <p class="post-text">May brought alarming news for Apache HugeGraph-Server users with the discovery of CVE-2024-27348. This critical vulnerability allows unauthenticated users to execute OS commands remotely, putting your systems at risk. <br> <br>What You
+                    Need to Know: <br> . Affected Software: Apache HugeGraph-Server versions before 1.3.0<br> . Impact: Attackers can gain complete control of vulnerable systems through Groovy injection. <br><br>Mitigation Steps: Upgrade to version 1.3.0
+                    or later to safeguard your systems against this serious threat. Keeping your software updated is vital for maintaining security. Don’t forget to evaluate the software you install and prioritize trusted sources!</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <button class="comment-button" onclick="toggleComments(this)">Add Comment</button>
+                <div class="comments-section">
+                    <h2>Comments</h2>
+                    <textarea placeholder="Add your comment..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Post Section 2 -->
+        <div class="post">
+            <div class="post-background">
+                <img src="/static/Post/CVE-2024-24919.jpg" alt="Post Background Image 2" class="post-img">
+            </div>
+            <div class="post-content">
+                <h1 class="post-title">Addressing the High-Severity CVE-2024-24919 in Check Point Security Gateways</h1>
+                <p class="author-info">By ? | Published on May 28, 2024</p>
+                <p class="post-text">Security professionals should take note of CVE-2024-24919, a high-severity information disclosure vulnerability affecting Check Point Security Gateways. Discovered in May, this flaw has been actively exploited since April.<br><br>Key Details:
+                    <br> . Affected Devices: Check Point Security Gateways with IPSec VPN or Mobile Access blades. <br> . Impact: Unauthorized access to sensitive information could facilitate further network attacks. <br><br>Recommended Action: Update
+                    your gateway immediately to apply the security hotfix released by Check Point. Implement multi-factor authentication to strengthen your defense against potential attacks.</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <button class="comment-button" onclick="toggleComments(this)">Add Comment</button>
+                <div class="comments-section">
+                    <h2>Comments</h2>
+                    <textarea placeholder="Add your comment..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Post Section 3 -->
+        <div class="post">
+            <div class="post-background">
+                <img src="/static/Post/CVE-2024-4835.jpg" alt="Post Background Image 2" class="post-img">
+            </div>
+            <div class="post-content">
+                <h1 class="post-title">GitLab Patches Critical XSS Vulnerability: CVE-2024-4835</h1>
+                <p class="author-info">By Vlad Constantinescu | Published on 23 May 2024</p>
+                <p class="post-text">In May, GitLab released patches for CVE-2024-4835, a critical cross-site scripting (XSS) vulnerability that could have jeopardized sensitive user data. <br><br>Overview: <br> . Severity: High (CVSS score: 8.0) <br> . Impact: Attackers
+                    could have stolen user credentials through crafted malicious web pages. <br><br>Action Required: Upgrade to GitLab versions 17.0.1, 16.11.3, or 16.10.6 to mitigate this vulnerability. Timely updates are essential to secure your data
+                    against exploitation.</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <button class="comment-button" onclick="toggleComments(this)">Add Comment</button>
+                <div class="comments-section">
+                    <h2>Comments</h2>
+                    <textarea placeholder="Add your comment..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Post Section 4 -->
+        <div class="post">
+            <div class="post-background">
+                <img src="/static/Post/CVE-2024-27130.jpg" alt="Post Background Image 2" class="post-img">
+            </div>
+            <div class="post-content">
+                <h1 class="post-title">Protecting Your QNAP NAS Devices from CVE-2024-27130</h1>
+                <p class="author-info">By ? | Published on 21 May 2024</p>
+                <p class="post-text">The discovery of CVE-2024-27130 this May poses a serious threat to users of QNAP NAS devices running QTS. This critical Remote Code Execution (RCE) vulnerability allows attackers to gain unauthorized access. <br><br>What You Should Know:
+                    <br> . Affected Products: QNAP NAS devices using the QTS OS. <br> . Impact: Attackers can access sensitive data and disrupt operations without needing login credentials. <br><br>Immediate Steps: Update your QNAP NAS to version 5.1.7.2770
+                    (released May 2024) to close this vulnerability. Stay vigilant and regularly check for security updates.
+
+                </p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <button class="comment-button" onclick="toggleComments(this)">Add Comment</button>
+                <div class="comments-section">
+                    <h2>Comments</h2>
+                    <textarea placeholder="Add your comment..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Post Section 5 -->
+        <div class="post">
+            <div class="post-background">
+                <img src="/static/Post/CVE-2024-4985.jpg" alt="Post Background Image 2" class="post-img">
+            </div>
+            <div class="post-content">
+                <h1 class="post-title">Critical Authentication Bypass in GitHub Enterprise Server: CVE-2024-4985</h1>
+                <p class="author-info">By ? | Published on 20 May 2024 </p>
+                <p class="post-text">GitHub Enterprise Server users need to address the critical vulnerability CVE-2024-4985 discovered in May, which allows attackers to bypass authentication completely. <br><br>Key Insights: <br> . Affected Product: GitHub Enterprise Server
+                    (prior to version 3.13.0) <br> . Impact: Attackers can gain unauthorized access to sensitive code repositories. <br><br> Mitigation: Upgrade to the patched versions 3.9.15, 3.10.12, 3.11.10, or 3.12.4 to protect against this vulnerability.
+                    For further details, check the official GitHub security advisory.</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <button class="comment-button" onclick="toggleComments(this)">Add Comment</button>
+                <div class="comments-section">
+                    <h2>Comments</h2>
+                    <textarea placeholder="Add your comment..."></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Secure File Check. All rights reserved.</p>
+    </div>
+
+    <script>
+        function toggleComments(button) {
+            const commentsSection = button.nextElementSibling; // Select the next sibling (comments-section)
+            if (commentsSection.style.display === "none" || commentsSection.style.display === "") {
+                commentsSection.style.display = "block"; // Show comments section
+            } else {
+                commentsSection.style.display = "none"; // Hide comments section
+            }
+        }
+
+
+        const searchItems = [{
+            name: 'SQL Injection',
+            url: '/SQL_Injection'
+        }, {
+            name: 'Cross Site Scripting',
+            url: '/Cross_Site_Scripting'
+        }, {
+            name: 'Command Execution',
+            url: '/Command_Execution'
+        }, {
+            name: 'Trojan Horse',
+            url: '/Trojan_horse'
+        }, {
+            name: 'Spyware',
+            url: '/Spyware'
+        }, {
+            name: 'Worm',
+            url: '/Worm'
+        }, {
+            name: 'Spyware',
+            url: '/Spyware'
+        }, {
+            name: 'Adware',
+            url: '/Adware'
+        }, {
+            name: 'Keyloggers',
+            url: '/Keyloggers'
+        }, {
+            name: 'Phishing',
+            url: '/Phishing'
+        }, {
+            name: 'Rootkits',
+            url: '/Rootkits'
+        }, {
+            name: 'Ransomware',
+            url: '/Ransomware'
+        }, {
+            name: 'Cryptojacking',
+            url: '/Cryptojacking'
+        }, {
+            name: 'Help',
+            url: '/ContactUs'
+        }];
+
+        function filterSearch() {
+            const input = document.getElementById('search-bar').value.toLowerCase();
+            const resultsContainer = document.getElementById('search-results');
+            resultsContainer.innerHTML = ''; // Clear previous results
+            const filteredItems = searchItems.filter(item => item.name.toLowerCase().includes(input));
+
+            if (filteredItems.length > 0 && input !== '') {
+                resultsContainer.style.display = 'block';
+                filteredItems.forEach(item => {
+                    const li = document.createElement('li');
+                    li.classList.add('list-group-item');
+                    li.innerHTML = `<a href="${item.url}" class="text-decoration-none">${item.name}</a>`;
+                    resultsContainer.appendChild(li);
+                });
+            } else {
+                resultsContainer.style.display = 'none';
+            }
+        }
+
+        document.addEventListener('click', function(event) {
+            const resultsContainer = document.getElementById('search-results');
+            if (!event.target.closest('#search-bar')) {
+                resultsContainer.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>

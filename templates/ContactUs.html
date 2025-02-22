@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        /* Global Styles */
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('/static/ContactUs/ConatactUs_background_images.jpg');
+            /* Add your image path here */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            width: 80%;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            /* Slight transparency */
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            max-width: 1200px;
+        }
+        
+        h2 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+        /* Contact Information Section */
+        
+        .contact-info,
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .contact-info {
+            background-color: #f1f1f1;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .contact-info h3 {
+            color: #007bff;
+            margin-bottom: 10px;
+            font-size: 1.5em;
+        }
+        
+        .contact-info p {
+            color: #495057;
+            margin: 5px 0;
+            font-size: 1em;
+        }
+        /* Form Section */
+        
+        .contact-form {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .contact-form h3 {
+            font-size: 1.75em;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+        
+        label {
+            font-weight: bold;
+            color: #495057;
+            margin-bottom: 5px;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 1em;
+            color: #495057;
+            background-color: #e9ecef;
+        }
+        
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #007bff;
+            background-color: #fff;
+        }
+        
+        textarea {
+            height: 180px;
+            resize: none;
+        }
+        /* Submit Button */
+        
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+        /* Responsive Layout */
+        
+        .responsive-section {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        @media (min-width: 768px) {
+            .responsive-section {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            .contact-info,
+            .contact-form {
+                width: 48%;
+            }
+        }
+        /* Footer Section */
+        
+        .footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #343a40;
+            color: white;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Contact Us</h2>
+        <div class="responsive-section">
+            <!-- Contact Information -->
+            <div class="contact-info">
+                <h3>Contact Information</h3>
+                <p><strong>Address:</strong> 123 Business Street, Suite 100, City, Country</p>
+                <p><strong>Phone:</strong> +123 456 7890</p>
+                <p><strong>Email:</strong> HArsh@Vishwakarama.com</p>
+                <p><strong>Computer Viruses :</strong> A computer virus is a malicious software program designed to infect a computer system, replicate itself, and spread to other devices. It typically attaches itself to legitimate programs or files and
+                    can be triggered when a user unknowingly runs the infected software. Once activated, a virus can cause various forms of harm, such as corrupting data, slowing down system performance, stealing personal information, or even rendering
+                    a system unusable. Viruses spread through email attachments, downloads, and compromised websites, making it crucial for users to maintain strong cybersecurity practices and use updated antivirus software to protect their devices.</p>
+                <p><strong>How to Detect if Your System is Infected with a Virus :</strong> To determine if your system is infected with malware or a virus, look for signs such as unexpected slowdowns, frequent crashes, or system freezes. Unusual pop-up
+                    messages, new or unfamiliar programs starting up automatically, or changes to your homepage or browser settings can also be indicators. Additionally, if you notice a significant increase in data usage or suspicious activity on your
+                    network, it might point to an infection. Running a full system scan with a reputable antivirus or antimalware program is the most reliable way to detect infections. Regularly updating your security software and monitoring your system’s
+                    behavior can help prevent and identify potential threats.</p>
+            </div>
+
+
+            <!-- Contact Form -->
+            <div class="contact-form">
+                <h3>Send Us a Message</h3>
+                <form action="#" method="POST">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" placeholder="Subject" required>
+
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+
+                    <button type="submit" class="submit-btn">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Business Name. All rights reserved.</p>
+    </div>
+
+</body>
+
+</html>
