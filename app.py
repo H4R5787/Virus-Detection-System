@@ -24,7 +24,6 @@ app.config['UPLOAD_FOLDER'] = 'uploads'
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 # Initialize Groq client for Llama 3
-# client = Groq(api_key="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")
 
 client = Groq(api_key=os.getenv('GROQ_API_KEY'))
 
